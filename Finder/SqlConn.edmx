@@ -1,0 +1,436 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище FinderModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="Country_ID" />
+          </Key>
+          <Property Name="Country_ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Pairs">
+          <Key>
+            <PropertyRef Name="First_User" />
+            <PropertyRef Name="Second_User" />
+          </Key>
+          <Property Name="First_User" Type="int" Nullable="false" />
+          <Property Name="Second_User" Type="int" Nullable="false" />
+          <Property Name="Date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Subscribe">
+          <Key>
+            <PropertyRef Name="Subscribe_ID" />
+          </Key>
+          <Property Name="Subscribe_ID" Type="int" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="User_ID" />
+          </Key>
+          <Property Name="User_ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="50" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Country_ID" Type="int" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" />
+          <Property Name="Registration_date" Type="date" />
+          <Property Name="Subscibe_Type" Type="int" />
+          <Property Name="ID_User_Info" Type="int" />
+        </EntityType>
+        <EntityType Name="User_Info">
+          <Key>
+            <PropertyRef Name="ID_User_Info" />
+          </Key>
+          <Property Name="ID_User_Info" Type="int" Nullable="false" />
+          <Property Name="Education" Type="nvarchar" MaxLength="150" />
+          <Property Name="Height" Type="int" />
+          <Property Name="Weight" Type="int" />
+          <Property Name="About" Type="nvarchar(max)" />
+          <Property Name="Zodiac_ID" Type="int" />
+          <Property Name="Photo" Type="varchar(max)" />
+          <Property Name="Photo_format" Type="varchar" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="Zodiac">
+          <Key>
+            <PropertyRef Name="Zodiac_ID" />
+          </Key>
+          <Property Name="Zodiac_ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Pairs_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Pairs" Type="Self.Pairs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="User_ID" />
+            </Principal>
+            <Dependent Role="Pairs">
+              <PropertyRef Name="First_User" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="Country_ID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="Country_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Info_Zodiac">
+          <End Role="Zodiac" Type="Self.Zodiac" Multiplicity="0..1" />
+          <End Role="User_Info" Type="Self.User_Info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zodiac">
+              <PropertyRef Name="Zodiac_ID" />
+            </Principal>
+            <Dependent Role="User_Info">
+              <PropertyRef Name="Zodiac_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Subscribe">
+          <End Role="Subscribe" Type="Self.Subscribe" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subscribe">
+              <PropertyRef Name="Subscribe_ID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="Subscibe_Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_User_Info">
+          <End Role="User_Info" Type="Self.User_Info" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User_Info">
+              <PropertyRef Name="ID_User_Info" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="ID_User_Info" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище FinderModelContainer">
+          <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pairs" EntityType="Self.Pairs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Subscribe" EntityType="Self.Subscribe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User_Info" EntityType="Self.User_Info" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Zodiac" EntityType="Self.Zodiac" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Pairs_User" Association="Self.FK_Pairs_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Pairs" EntitySet="Pairs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Country" Association="Self.FK_User_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Info_Zodiac" Association="Self.FK_User_Info_Zodiac">
+            <End Role="Zodiac" EntitySet="Zodiac" />
+            <End Role="User_Info" EntitySet="User_Info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Subscribe" Association="Self.FK_User_Subscribe">
+            <End Role="Subscribe" EntitySet="Subscribe" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_User_Info" Association="Self.FK_User_User_Info">
+            <End Role="User_Info" EntitySet="User_Info" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FinderModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="User_ID" />
+          </Key>
+          <Property Name="User_ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Registration_date" Type="DateTime" Precision="0" />
+          <Property Name="Subscibe_Type" Type="Int32" />
+          <Property Name="ID_User_Info" Type="Int32" />
+          <Property Name="Country_ID" Type="Int32" />
+          <NavigationProperty Name="Country" Relationship="FinderModel.FK_User_Country" FromRole="User" ToRole="Country" />
+          <NavigationProperty Name="Pairs" Relationship="FinderModel.FK_Pairs_User" FromRole="User" ToRole="Pairs" />
+          <NavigationProperty Name="Subscribe" Relationship="FinderModel.FK_User_Subscribe" FromRole="User" ToRole="Subscribe" />
+          <NavigationProperty Name="User_Info" Relationship="FinderModel.FK_User_User_Info" FromRole="User" ToRole="User_Info" />
+        </EntityType>
+        <EntityContainer Name="FinderEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="User" EntityType="Self.User" />
+          <EntitySet Name="Subscribe" EntityType="FinderModel.Subscribe" />
+          <EntitySet Name="sysdiagrams" EntityType="FinderModel.sysdiagrams" />
+          <EntitySet Name="User_Info" EntityType="FinderModel.User_Info" />
+          <EntitySet Name="Country" EntityType="FinderModel.Country" />
+          <EntitySet Name="Pairs" EntityType="FinderModel.Pairs" />
+          <EntitySet Name="Zodiac" EntityType="FinderModel.Zodiac" />
+          <AssociationSet Name="FK_User_Country" Association="FinderModel.FK_User_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pairs_User" Association="FinderModel.FK_Pairs_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Pairs" EntitySet="Pairs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Subscribe" Association="FinderModel.FK_User_Subscribe">
+            <End Role="Subscribe" EntitySet="Subscribe" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_User_Info" Association="FinderModel.FK_User_User_Info">
+            <End Role="User_Info" EntitySet="User_Info" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Info_Zodiac" Association="FinderModel.FK_User_Info_Zodiac">
+            <End Role="Zodiac" EntitySet="Zodiac" />
+            <End Role="User_Info" EntitySet="User_Info" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Subscribe">
+          <Key>
+            <PropertyRef Name="Subscribe_ID" />
+          </Key>
+          <Property Name="Subscribe_ID" Type="Int32" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User" Relationship="FinderModel.FK_User_Subscribe" FromRole="Subscribe" ToRole="User" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="User_Info">
+          <Key>
+            <PropertyRef Name="ID_User_Info" />
+          </Key>
+          <Property Name="ID_User_Info" Type="Int32" Nullable="false" />
+          <Property Name="Education" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Height" Type="Int32" />
+          <Property Name="Weight" Type="Int32" />
+          <Property Name="About" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Zodiac_ID" Type="Int32" />
+          <Property Name="Photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Photo_format" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="User" Relationship="FinderModel.FK_User_User_Info" FromRole="User_Info" ToRole="User" />
+          <NavigationProperty Name="Zodiac" Relationship="FinderModel.FK_User_Info_Zodiac" FromRole="User_Info" ToRole="Zodiac" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="Country_ID" />
+          </Key>
+          <Property Name="Country_ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User" Relationship="FinderModel.FK_User_Country" FromRole="Country" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Pairs">
+          <Key>
+            <PropertyRef Name="First_User" />
+            <PropertyRef Name="Second_User" />
+          </Key>
+          <Property Name="First_User" Type="Int32" Nullable="false" />
+          <Property Name="Second_User" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="User" Relationship="FinderModel.FK_Pairs_User" FromRole="Pairs" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Zodiac">
+          <Key>
+            <PropertyRef Name="Zodiac_ID" />
+          </Key>
+          <Property Name="Zodiac_ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User_Info" Relationship="FinderModel.FK_User_Info_Zodiac" FromRole="Zodiac" ToRole="User_Info" />
+        </EntityType>
+        <Association Name="FK_User_Country">
+          <End Type="FinderModel.Country" Role="Country" Multiplicity="0..1" />
+          <End Type="FinderModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="Country_ID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="Country_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pairs_User">
+          <End Type="FinderModel.User" Role="User" Multiplicity="1" />
+          <End Type="FinderModel.Pairs" Role="Pairs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="User_ID" />
+            </Principal>
+            <Dependent Role="Pairs">
+              <PropertyRef Name="First_User" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Subscribe">
+          <End Type="FinderModel.Subscribe" Role="Subscribe" Multiplicity="0..1" />
+          <End Type="FinderModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subscribe">
+              <PropertyRef Name="Subscribe_ID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="Subscibe_Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_User_Info">
+          <End Type="FinderModel.User_Info" Role="User_Info" Multiplicity="0..1" />
+          <End Type="FinderModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User_Info">
+              <PropertyRef Name="ID_User_Info" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="ID_User_Info" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Info_Zodiac">
+          <End Type="FinderModel.Zodiac" Role="Zodiac" Multiplicity="0..1" />
+          <End Type="FinderModel.User_Info" Role="User_Info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zodiac">
+              <PropertyRef Name="Zodiac_ID" />
+            </Principal>
+            <Dependent Role="User_Info">
+              <PropertyRef Name="Zodiac_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище FinderModelContainer" CdmEntityContainer="FinderEntities">
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="FinderModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Country_ID" ColumnName="Country_ID" />
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Registration_date" ColumnName="Registration_date" />
+                <ScalarProperty Name="Subscibe_Type" ColumnName="Subscibe_Type" />
+                <ScalarProperty Name="ID_User_Info" ColumnName="ID_User_Info" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Subscribe">
+            <EntityTypeMapping TypeName="FinderModel.Subscribe">
+              <MappingFragment StoreEntitySet="Subscribe">
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Subscribe_ID" ColumnName="Subscribe_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="FinderModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User_Info">
+            <EntityTypeMapping TypeName="FinderModel.User_Info">
+              <MappingFragment StoreEntitySet="User_Info">
+                <ScalarProperty Name="Photo_format" ColumnName="Photo_format" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Zodiac_ID" ColumnName="Zodiac_ID" />
+                <ScalarProperty Name="About" ColumnName="About" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="Education" ColumnName="Education" />
+                <ScalarProperty Name="ID_User_Info" ColumnName="ID_User_Info" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Country">
+            <EntityTypeMapping TypeName="FinderModel.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Country_ID" ColumnName="Country_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pairs">
+            <EntityTypeMapping TypeName="FinderModel.Pairs">
+              <MappingFragment StoreEntitySet="Pairs">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Second_User" ColumnName="Second_User" />
+                <ScalarProperty Name="First_User" ColumnName="First_User" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Zodiac">
+            <EntityTypeMapping TypeName="FinderModel.Zodiac">
+              <MappingFragment StoreEntitySet="Zodiac">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Zodiac_ID" ColumnName="Zodiac_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
