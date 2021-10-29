@@ -67,6 +67,7 @@
     <Compile Include="Country.cs">
       <DependentUpon>SqlConn.tt</DependentUpon>
     </Compile>
+    <Compile Include="FinderCore.cs" />
     <Compile Include="Pairs.cs">
       <DependentUpon>SqlConn.tt</DependentUpon>
     </Compile>

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Finder;
 
 namespace Finder
 {
@@ -20,9 +21,15 @@ namespace Finder
     /// </summary>
     public partial class Registration : Page
     {
+        FinderCore core = new FinderCore();
         public Registration()
         {
             InitializeComponent();
+            var cn = core.Enter();
+            foreach(var c in cn)
+            {
+                MessageBox.Show(c.Name.ToString());
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

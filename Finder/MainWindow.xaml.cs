@@ -26,9 +26,18 @@ namespace Finder
             frame_reg.NavigationService.Navigate(new Registration());
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void AuthRegButton_Click(object sender, RoutedEventArgs e)
         {
-            frame_reg.NavigationService.Navigate(new Auth());
+            if (frame_reg.Content == frame_reg.Content as Registration)
+            {
+                frame_reg.NavigationService.Navigate(new Auth());
+                AuthRegButton.Content = "Зарегистрироваться";
+            }
+            else
+            {
+                frame_reg.NavigationService.Navigate(new Registration());
+                AuthRegButton.Content = "Войти";
+            }
         }
     }
 }
