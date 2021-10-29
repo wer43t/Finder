@@ -16,19 +16,18 @@ using System.Windows.Shapes;
 namespace Finder
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для Registration.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Registration : Page
     {
-        public MainWindow()
+        public Registration()
         {
             InitializeComponent();
-            frame_reg.NavigationService.Navigate(new Registration());
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            frame_reg.NavigationService.Navigate(new Auth());
+            NavigationService.Navigate(new Auth());
         }
     }
 }
