@@ -4,19 +4,19 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="ae068dd2ec4c4ab8b6c282b1db210b73" Name="Diagram1" ZoomLevel="86">
-        <EntityTypeShape EntityType="FinderModel.User" Width="1.5" PointX="8.875" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="FinderModel.Subscribe" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="FinderModel.sysdiagrams" Width="1.5" PointX="3.125" PointY="0.75" />
-        <EntityTypeShape EntityType="FinderModel.User_Info" Width="1.5" PointX="0.75" PointY="3.75" />
-        <EntityTypeShape EntityType="FinderModel.Country" Width="1.5" PointX="6.625" PointY="4.625" />
-        <EntityTypeShape EntityType="FinderModel.Pairs" Width="1.5" PointX="11.125" PointY="1.375" />
-        <EntityTypeShape EntityType="FinderModel.Zodiac" Width="1.5" PointX="0.75" PointY="8.375" />
+      <Diagram DiagramId="a63e32454f394d4d8b4c79adb43a6153" Name="Diagram1">
+        <EntityTypeShape EntityType="FinderModel.Country" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinderModel.Pairs" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinderModel.Subscribe" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinderModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinderModel.User" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinderModel.User_Info" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinderModel.Zodiac" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <AssociationConnector Association="FinderModel.FK_Pairs_User" ManuallyRouted="false" />
+        <AssociationConnector Association="FinderModel.FK_User_Info_Zodiac" ManuallyRouted="false" />
         <AssociationConnector Association="FinderModel.FK_User_Country" />
-        <AssociationConnector Association="FinderModel.FK_Pairs_User" />
         <AssociationConnector Association="FinderModel.FK_User_Subscribe" />
         <AssociationConnector Association="FinderModel.FK_User_User_Info" />
-        <AssociationConnector Association="FinderModel.FK_User_Info_Zodiac" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

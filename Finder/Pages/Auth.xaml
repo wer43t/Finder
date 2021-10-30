@@ -129,7 +129,7 @@
         <TextBlock Grid.Row="1" Grid.Column="1" Text="Вход в Finder" Grid.RowSpan="1" FontSize="25" Height="33" Width="258"/>
         <TextBlock Grid.Row="2" Grid.Column="1" Text="Введи свои данные" VerticalAlignment="Top" Height="20" Width="352" Margin="0,10,0,40" Padding="0 0 0 10"/>
         <TextBlock Grid.Row="3" Grid.Column="1" Text="Логин" Height="20"  Margin="0"/>
-        <TextBox Grid.Row="4" Grid.Column="1" Style="{DynamicResource TextBoxRadius}" VerticalContentAlignment="Center" Height="40"/>
+        <TextBox Grid.Row="4" Grid.Column="1"  Style="{DynamicResource TextBoxRadius}" VerticalContentAlignment="Center" Height="40"/>
         <TextBlock Grid.Row="5" Grid.Column="1" Text="Пароль" Margin="0"/>
         <PasswordBox Grid.Row="6" Grid.Column="1"  VerticalContentAlignment="Center" Height="40" Style="{DynamicResource PasswordBoxRadius}"/>
         <Button Grid.Column="1" Grid.Row="7" Content="Войти" MinHeight="2" Style="{DynamicResource ButtonRadius}" Background="#783bf9" MaxWidth="200"  Height="40"/>

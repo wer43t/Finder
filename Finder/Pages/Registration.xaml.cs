@@ -25,16 +25,41 @@ namespace Finder
         public Registration()
         {
             InitializeComponent();
-            var cn = core.Enter();
-            foreach(var c in cn)
-            {
-                MessageBox.Show(c.Name.ToString());
-            }
+            FillCmBox();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Auth());
+        }
+
+        private void btnRegistration(object sender, RoutedEventArgs e)
+        {
+            User user = new User();
+            user.Name = Name.Text;
+            user.Surname = Surname.Text;
+            user.email = mail.Text;
+            user.Country_ID = core.GetCountryID(cmBoxCountries.SelectedItem.ToString());
+            user.Username = "unknown";
+            user.Birthday = Birthday.SelectedDate;
+            user.Subscibe_Type = 1;
+            user.password = psBox.Password;
+            core.CreateNewAccount(user);
+            NavigationService.Navigate(new Auth());
+        }
+
+        private void FillCmBox()
+        {
+            foreach (var countries in core.GetCountries())
+            {
+                cmBoxCountries.Items.Add(countries.Name.ToString());
+            }
+        }
+
+        private void mail_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var checkMail = core.MailValidate(sender.GetType().GetProperty("Text").ToString()) ? "OK" : "not ok";
+            MessageBox.Show(checkMail);
         }
     }
 }

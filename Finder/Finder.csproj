@@ -64,15 +64,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="bd_connections.cs" />
     <Compile Include="Country.cs">
       <DependentUpon>SqlConn.tt</DependentUpon>
     </Compile>
     <Compile Include="FinderCore.cs" />
-    <Compile Include="Pairs.cs">
-      <DependentUpon>SqlConn.tt</DependentUpon>
-    </Compile>
     <Compile Include="Pages\Registration.xaml.cs">
       <DependentUpon>Registration.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pairs.cs">
+      <DependentUpon>SqlConn.tt</DependentUpon>
     </Compile>
     <Compile Include="SqlConn.Context.cs">
       <AutoGen>True</AutoGen>
@@ -163,19 +164,19 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="SqlConn.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>SqlConn.Context.cs</LastGenOutput>
       <DependentUpon>SqlConn.edmx</DependentUpon>
+      <LastGenOutput>SqlConn.Context.cs</LastGenOutput>
     </Content>
     <Content Include="SqlConn.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>SqlConn.edmx</DependentUpon>
       <LastGenOutput>SqlConn.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
