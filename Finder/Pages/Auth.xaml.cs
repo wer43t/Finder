@@ -20,11 +20,40 @@ namespace Finder
     /// </summary>
     public partial class Auth : Page
     {
+        FinderCore core = new FinderCore();
         public Auth()
         {
             InitializeComponent();
         }
 
+        private void bntAuthClick(object sender, RoutedEventArgs e)
+        {
+            User user = new User();
+            user.email = mail.Text;
+            user.password = pwBox.Password;
+            bool auth = core.UserAuth(user);
+            if (auth)
+            {
+                Application.Current.MainWindow.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Incorrect user");
+            }
+        }
+
+        private void SuccessfulLogin()
+        {
+            if (core.CheckUserInfo())
+            {
+                ApplicationWindow applicationWindow = new ApplicationWindow();
+                applicationWindow.Show();
+            }
+            else
+            {
+
+            }
+        }
 
     }
 }

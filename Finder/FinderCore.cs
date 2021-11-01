@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Finder
 {
@@ -16,6 +18,8 @@ namespace Finder
         public static ObservableCollection<Zodiac> Zodiacs { get; set; }
         public static ObservableCollection<Pairs> Pairs { get; set; }
 
+        public CurrentUser CurrentUser;
+
         public ObservableCollection<Country> GetCountries()
         {
             return Countries = new ObservableCollection<Country>(bd_connections.connection.Country.ToList());
@@ -23,8 +27,15 @@ namespace Finder
 
         public void CreateNewAccount(User user)
         {
-            bd_connections.connection.User.Add(user);
-            bd_connections.connection.SaveChanges();
+            try
+            {
+                bd_connections.connection.User.Add(user);
+                bd_connections.connection.SaveChanges();
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
         }
 
         public int GetCountryID(string cnName)
@@ -41,16 +52,27 @@ namespace Finder
             bd_connections.connection.User_Info.Add(user_Info);
         }
 
-        public void UserAuth()
+        public bool UserAuth(User user)
         {
-
+            Users = new ObservableCollection<User>(bd_connections.connection.User.ToList());
+            var auth = from usrs in Users
+                       where user.email == usrs.email && user.password == usrs.password
+                       select usrs;
+            CurrentUser = new CurrentUser(auth.First());
+            if (auth.Count() == 1)
+                return true;
+            else
+                return false;
         }
 
         public bool MailValidate(string mail)
         {
-            string emailPattern = @"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$";
-            bool isItEmail = Regex.IsMatch(mail, emailPattern);
-            return isItEmail;
+            return new EmailAddressAttribute().IsValid(mail);
+        }
+
+        public bool CheckUserInfo()
+        {
+            return CurrentUser.user.ID_User_Info == null ? false : true;
         }
     }
 }

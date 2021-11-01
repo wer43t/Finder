@@ -29,8 +29,8 @@ namespace Finder
         public string Photo { get; set; }
         public string Photo_format { get; set; }
     
-        public virtual Zodiac Zodiac { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<User> User { get; set; }
+        public virtual Zodiac Zodiac { get; set; }
     }
 }

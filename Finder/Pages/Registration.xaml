@@ -193,13 +193,13 @@
         <TextBlock Grid.Row="5" Grid.Column="1" Text="Фамилия" Margin="0"/>
         <TextBox x:Name="Surname" Grid.Row="6" Grid.Column="1" Style="{DynamicResource TextBoxRadius}" VerticalContentAlignment="Center" Height="40"/>
         <TextBlock Grid.Row="7" Grid.Column="1" Text="Почтовый адрес" Margin="0" x:Name="ID_managet"/>
-        <TextBox x:Name="mail" Grid.Row="8" Grid.Column="1" Style="{DynamicResource TextBoxRadius}" VerticalContentAlignment="Center" Height="40" TextChanged="mail_TextChanged"/>
+        <TextBox x:Name="mail" Grid.Row="8" Grid.Column="1" Style="{DynamicResource TextBoxRadius}" VerticalContentAlignment="Center" Height="40" LostKeyboardFocus="mail_LostKeyboardFocus"/>
         <TextBlock Grid.Row="9" Grid.Column="1" Text="Страна" Margin="0"/>
         <ComboBox x:Name="cmBoxCountries" Grid.Row="10" Grid.Column="1" Height="40"/>
         <TextBlock Grid.Row="11" Grid.Column="1" Text="Дата рождения" Margin="0"/>
         <DatePicker x:Name="Birthday" Grid.Row="12" Grid.Column="1" Height="40"></DatePicker>
         <TextBlock Grid.Row="13" Grid.Column="1" Text="Password"/>
-        <PasswordBox x:Name="psBox" Grid.Row="14" Grid.Column="1" Height="40" Style="{DynamicResource psBoxRadius}"/>
+        <PasswordBox x:Name="psBox" VerticalContentAlignment="Center" Grid.Row="14" Grid.Column="1" Height="40" Style="{DynamicResource psBoxRadius}"/>
         <Button Grid.Column="1" Grid.Row="15" Content="Зарегистрироваться" MinHeight="2" Style="{DynamicResource ButtonRadius}" Background="#783bf9" Margin="36,70,36,13"  Height="43" Click="btnRegistration"/>
     </Grid>
 </Page>

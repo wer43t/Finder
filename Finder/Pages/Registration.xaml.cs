@@ -39,7 +39,12 @@ namespace Finder
             user.Name = Name.Text;
             user.Surname = Surname.Text;
             user.email = mail.Text;
-            user.Country_ID = core.GetCountryID(cmBoxCountries.SelectedItem.ToString());
+            if (cmBoxCountries.SelectedItem != null)
+                user.Country_ID = core.GetCountryID(cmBoxCountries.SelectedItem.ToString());
+            else
+            {
+                MessageBox.Show("Выберите страну");
+                return;            }
             user.Username = "unknown";
             user.Birthday = Birthday.SelectedDate;
             user.Subscibe_Type = 1;
@@ -56,10 +61,16 @@ namespace Finder
             }
         }
 
-        private void mail_TextChanged(object sender, TextChangedEventArgs e)
+
+        private void mail_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
         {
-            var checkMail = core.MailValidate(sender.GetType().GetProperty("Text").ToString()) ? "OK" : "not ok";
-            MessageBox.Show(checkMail);
+            var checkMail = core.MailValidate(sender.GetType().GetProperty("Text").GetValue(sender).ToString());
+            if (!checkMail)
+            {
+                MessageBox.Show("Incorrect email");
+                mail.Focusable = true;
+                Keyboard.Focus(mail);
+            }
         }
     }
 }
