@@ -34,7 +34,7 @@ namespace Finder
             bool auth = core.UserAuth(user);
             if (auth)
             {
-                Application.Current.MainWindow.Hide();
+                SuccessfulLogin();
             }
             else
             {
@@ -44,14 +44,14 @@ namespace Finder
 
         private void SuccessfulLogin()
         {
+            ApplicationWindow applicationWindow = new ApplicationWindow();
             if (core.CheckUserInfo())
             {
-                ApplicationWindow applicationWindow = new ApplicationWindow();
                 applicationWindow.Show();
             }
             else
             {
-
+                NavigationService.Navigate(new Pages.UserInfoPage());
             }
         }
 

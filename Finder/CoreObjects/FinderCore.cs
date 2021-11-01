@@ -18,11 +18,24 @@ namespace Finder
         public static ObservableCollection<Zodiac> Zodiacs { get; set; }
         public static ObservableCollection<Pairs> Pairs { get; set; }
 
-        public CurrentUser CurrentUser;
 
         public ObservableCollection<Country> GetCountries()
         {
             return Countries = new ObservableCollection<Country>(bd_connections.connection.Country.ToList());
+        }
+
+        public ObservableCollection<Zodiac> GetZodiac()
+        {
+            return Zodiacs = new ObservableCollection<Zodiac>(bd_connections.connection.Zodiac.ToList());
+        }
+
+        public int GetZodiacID(string zodiacName)
+        {
+            Zodiacs = new ObservableCollection<Zodiac>(bd_connections.connection.Zodiac.ToList());
+            var cnID = from zds in Zodiacs //
+                       where zds.Name == zodiacName
+                       select zds;
+            return cnID.ToList()[0].Zodiac_ID;
         }
 
         public void CreateNewAccount(User user)
@@ -58,7 +71,7 @@ namespace Finder
             var auth = from usrs in Users
                        where user.email == usrs.email && user.password == usrs.password
                        select usrs;
-            CurrentUser = new CurrentUser(auth.First());
+            CurrentUser.user = auth.ToList()[0];
             if (auth.Count() == 1)
                 return true;
             else

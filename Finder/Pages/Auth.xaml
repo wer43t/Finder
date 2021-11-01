@@ -132,6 +132,6 @@
         <TextBox x:Name="mail" Grid.Row="4" Grid.Column="1"  Style="{DynamicResource TextBoxRadius}" VerticalContentAlignment="Center" Height="40"/>
         <TextBlock Grid.Row="5" Grid.Column="1" Text="Пароль" Margin="0"/>
         <PasswordBox x:Name="pwBox" Grid.Row="6" Grid.Column="1"  VerticalContentAlignment="Center" Height="40" Style="{DynamicResource PasswordBoxRadius}"/>
-        <Button Grid.Column="1" Grid.Row="7" Content="Войти" MinHeight="2" Style="{DynamicResource ButtonRadius}" Background="#783bf9" MaxWidth="200"  Height="40" Click="bntAuthClick"/>
+        <Button Grid.Column="1" Grid.Row="7" Content="Войти" MinHeight="2"  Background="#783bf9" MaxWidth="200"  Height="40" Click="bntAuthClick"/>
     </Grid>
 </Page>

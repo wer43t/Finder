@@ -6,13 +6,8 @@ using System.Threading.Tasks;
 
 namespace Finder
 {
-    public class CurrentUser
+    public static class CurrentUser
     {
-        public User user;
-
-        public CurrentUser(User user)
-        {
-            this.user = user;
-        }
+        public  static User user;
     }
 }
