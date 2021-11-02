@@ -22,6 +22,17 @@ namespace Finder
         public ApplicationWindow()
         {
             InitializeComponent();
+            frame_reg.NavigationService.Navigate(new AppWindowPages.UserInfo());
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            frame_reg.NavigationService.Navigate(new AppWindowPages.UserInfo());
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            frame_reg.NavigationService.Navigate(new AppWindowPages.FindUsers());
         }
     }
 }

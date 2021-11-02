@@ -18,6 +18,7 @@ namespace Finder
         public static ObservableCollection<Zodiac> Zodiacs { get; set; }
         public static ObservableCollection<Pairs> Pairs { get; set; }
 
+        private static ObservableCollection<User> NormalUsers = new ObservableCollection<User>(bd_connections.connection.User.ToList());
 
         public ObservableCollection<Country> GetCountries()
         {
@@ -93,6 +94,13 @@ namespace Finder
                 return false;
         }
 
+        public User GetOneUser()
+        {
+            var user = NormalUsers.FirstOrDefault();
+            NormalUsers.Remove(user);
+            return user;
+        }
+
         public bool MailValidate(string mail)
         {
             return new EmailAddressAttribute().IsValid(mail);
@@ -101,6 +109,16 @@ namespace Finder
         public bool CheckUserInfo()
         {
             return CurrentUser.user.ID_User_Info == null ? false : true;
+        }
+
+        public string GetAge(DateTime? dateOfBirth)
+        {
+            var today = DateTime.Today;
+
+            var a = (today.Year * 100 + today.Month) * 100 + today.Day;
+            var b = (dateOfBirth.Value.Year * 100 + dateOfBirth.Value.Month) * 100 + dateOfBirth.Value.Day;
+
+            return ((a - b) / 10000).ToString();
         }
     }
 }

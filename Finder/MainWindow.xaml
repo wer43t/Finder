@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Finder"
         mc:Ignorable="d"
-        Title="Finder" MinWidth="900" MinHeight="800" WindowStyle="ThreeDBorderWindow" WindowStartupLocation="CenterOwner">
+        Title="Finder" MinWidth="900" MinHeight="800" WindowStyle="ThreeDBorderWindow" WindowStartupLocation="CenterOwner" Width="900" Height="800">
     <Window.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">

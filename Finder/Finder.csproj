@@ -98,6 +98,12 @@
     <Compile Include="ApplicationWindow.xaml.cs">
       <DependentUpon>ApplicationWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AppWindowPages\FindUsers.xaml.cs">
+      <DependentUpon>FindUsers.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AppWindowPages\UserInfo.xaml.cs">
+      <DependentUpon>UserInfo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CoreObjects\bd_connections.cs" />
     <Compile Include="Country.cs">
       <DependentUpon>SqlConn.tt</DependentUpon>
@@ -144,6 +150,14 @@
       <DependentUpon>SqlConn.tt</DependentUpon>
     </Compile>
     <Page Include="ApplicationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AppWindowPages\FindUsers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AppWindowPages\UserInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -213,6 +227,7 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="userImg.png" />
     <SplashScreen Include="logo.png" />
     <Content Include="SqlConn.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

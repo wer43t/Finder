@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Finder"
         mc:Ignorable="d"
-        Title="ApplicationWindow" Height="450" Width="800">
+        Title="ApplicationWindow" MinWidth="900" MinHeight="800" WindowStyle="ThreeDBorderWindow" WindowStartupLocation="CenterOwner">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="62*"/>
-            <RowDefinition Height="90*"/>
-            <RowDefinition Height="90*"/>
-            <RowDefinition Height="90*"/>
-            <RowDefinition Height="90*"/>
+            <RowDefinition Height="67*"/>
+            <RowDefinition Height="115*"/>
+            <RowDefinition Height="107*"/>
+            <RowDefinition Height="107*"/>
+            <RowDefinition Height="108*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -22,12 +22,12 @@
         <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="1" Grid.RowSpan="4">
             <Frame x:Name="frame_reg" NavigationUIVisibility="Hidden"/>
         </StackPanel>
-        <Button Grid.Column="0" Grid.Row="1" BorderBrush="Black"/>
-        <Button Grid.Column="0" Grid.Row="2" BorderBrush="Black"/>
-        <Button Grid.Column="0" Grid.Row="3" BorderBrush="Black"/>
-        <Button Grid.Column="0" Grid.Row="4" BorderBrush="Black"/>
+        <Button x:Name="CurrentUserInfo" Grid.Column="0" Grid.Row="1"  Content="Текущий пользователь" BorderBrush="Black" Click="Button_Click"/>
+        <Button Grid.Column="0" Grid.Row="2" Content="Просмотр других" BorderBrush="Black" Click="Button_Click_1"/>
+        <Button Grid.Column="0" Grid.Row="3" Content="Мои пары" BorderBrush="Black"/>
+        <Button Grid.Column="0" Grid.Row="4" Content="Мессенджер" BorderBrush="Black"/>
         <Border Grid.ColumnSpan="3" Background="#783bf9"/>
-        <TextBlock Grid.Column="1" Grid.Row="0" Text="Finder" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Harlow Solid Italic" FontSize="36"  Height="44" Width="104" Margin="80,6,81,12"/>
-        <Button x:Name="AuthRegButton" Grid.Column="2" Grid.Row="0" Content="Выйти" MinHeight="2"  Background="Transparent" BorderBrush="Black" Margin="68,12,68,14" VerticalAlignment="Center" Height="36"/>
+        <TextBlock Grid.Column="1" Grid.Row="0" Text="Finder" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Harlow Solid Italic" FontSize="36"  Height="44" Width="104" Margin="74,9,75,14"/>
+        <Button x:Name="AuthRegButton" Grid.Column="2" Grid.Row="0" Content="Выйти" MinHeight="2"  Background="Transparent" BorderBrush="Black" Margin="91,15,92,16" VerticalAlignment="Center" Height="36"/>
     </Grid>
 </Window>
