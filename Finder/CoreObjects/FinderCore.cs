@@ -63,6 +63,19 @@ namespace Finder
         public void CreateNewUserInfo(User_Info user_Info)
         {
             bd_connections.connection.User_Info.Add(user_Info);
+            bd_connections.connection.SaveChanges();
+            InsertUserInfoInUser(CurrentUser.user.User_ID, user_Info.ID_User_Info);
+
+        }
+
+        public void InsertUserInfoInUser(int UserId, int UserInfoID)
+        {
+            Users = new ObservableCollection<User>(bd_connections.connection.User.ToList());
+            var user = from usrs in Users
+                       where UserId == usrs.User_ID
+                       select usrs;
+            user.FirstOrDefault().ID_User_Info = UserInfoID;
+            bd_connections.connection.SaveChanges();
         }
 
         public bool UserAuth(User user)
@@ -71,9 +84,11 @@ namespace Finder
             var auth = from usrs in Users
                        where user.email == usrs.email && user.password == usrs.password
                        select usrs;
-            CurrentUser.user = auth.ToList()[0];
-            if (auth.Count() == 1)
+            if (auth.Count() == 1) 
+            {
+                CurrentUser.user = auth.FirstOrDefault();
                 return true;
+            }
             else
                 return false;
         }

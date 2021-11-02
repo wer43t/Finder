@@ -47,7 +47,8 @@ namespace Finder
             ApplicationWindow applicationWindow = new ApplicationWindow();
             if (core.CheckUserInfo())
             {
-                applicationWindow.Show();
+                Application.Current.MainWindow.Closed += MainWindow_Closed;
+                Application.Current.MainWindow.Close();
             }
             else
             {
@@ -55,5 +56,11 @@ namespace Finder
             }
         }
 
+        private void MainWindow_Closed(object sender, EventArgs e)
+        {
+            Application.Current.MainWindow = new ApplicationWindow();
+            Application.Current.MainWindow.Show();
+
+        }
     }
 }

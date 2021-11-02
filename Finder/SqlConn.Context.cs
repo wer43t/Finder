@@ -31,5 +31,6 @@ namespace Finder
         public virtual DbSet<User> User { get; set; }
         public virtual DbSet<User_Info> User_Info { get; set; }
         public virtual DbSet<Zodiac> Zodiac { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
     }
 }
