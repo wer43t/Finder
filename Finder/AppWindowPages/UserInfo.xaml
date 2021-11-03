@@ -162,10 +162,11 @@
         </Style>
     </Page.Resources>
 
-    <Grid x:Name="UserGrid">
+    <Grid x:Name="UserGrid" Margin="0,40,0,0" >
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
-            <ColumnDefinition Width="400"/>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="200"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -188,19 +189,20 @@
             <RowDefinition Height="57*"/>
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="3" Grid.Column="1" Text="Образование" Height="20" Width="116" Margin="0"/>
-        <TextBox x:Name="education" Grid.Row="4" Grid.Column="1" Style="{DynamicResource TextBoxRadius}" VerticalContentAlignment="Center" Height="40"/>
-        <TextBlock Grid.Row="5" Grid.Column="1" Text="Рост" Margin="0"/>
-        <TextBox x:Name="weight" Grid.Row="6" Grid.Column="1" Style="{DynamicResource TextBoxRadius}" VerticalContentAlignment="Center" Height="40"/>
-        <TextBlock Grid.Row="7" Grid.Column="1" Text="Вес" Margin="0" x:Name="ID_managet"/>
-        <TextBox x:Name="height" Grid.Row="8" Grid.Column="1" Style="{DynamicResource TextBoxRadius}" VerticalContentAlignment="Center" Height="40"/>
-        <TextBlock Grid.Row="9" Grid.Column="1" Text="Обо мне" Margin="0"/>
-        <TextBox x:Name="About" Grid.Row="10" Grid.Column="1" Style="{DynamicResource TextBoxRadius}"  Height="80"/>
+        <TextBox x:Name="education" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Style="{DynamicResource TextBoxRadius}" VerticalContentAlignment="Center" Height="40"/>
+        <TextBlock Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" Text="Рост" Margin="0"/>
+        <TextBox x:Name="weight" Grid.Row="6" Grid.Column="1"  Grid.ColumnSpan="2" Style="{DynamicResource TextBoxRadius}" VerticalContentAlignment="Center" Height="40"/>
+        <TextBlock Grid.Row="7" Grid.Column="1"  Text="Вес" Margin="0" x:Name="ID_managet"/>
+        <TextBox x:Name="height" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2" Style="{DynamicResource TextBoxRadius}" VerticalContentAlignment="Center" Height="40"/>
+        <TextBlock Grid.Row="9" Grid.Column="1" Text="Обо мне"  Margin="0"/>
+        <TextBox x:Name="About" Grid.Row="10" Grid.Column="1" Grid.ColumnSpan="2" Style="{DynamicResource TextBoxRadius}"  Height="80"/>
         <TextBlock Grid.Row="11" Grid.Column="1" Text="Знак зодиака" Margin="0"/>
-        <ComboBox x:Name="cmBoxZodiacs" Grid.Row="12" Grid.Column="1" Height="40" VerticalContentAlignment="Center"/>
+        <ComboBox x:Name="cmBoxZodiacs" Grid.Row="12" Grid.Column="1"  Grid.ColumnSpan="2" Height="40" VerticalContentAlignment="Center"/>
         <!-- <Button Grid.Row="14" Grid.Column="1" Grid.RowSpan="2">
         #    <Image Source="https://i.imgur.com/swYN9Sj.jpeg"/>
         #</Button> -->
         <Button x:Name="btnApply" Grid.Column="1" Grid.Row="15" Content="Подтвердить" MinHeight="2" Style="{DynamicResource ButtonRadius}" Background="#783bf9" Margin="36,70,36,13"  Height="43"/>
+        <Button x:Name="btnChange" Grid.Column="2" Grid.Row="15" IsEnabled="True" Content="Изменить" Style="{DynamicResource ButtonRadius}"  Background="#783bf9" Margin="36,70,36,13"  Height="43" Click="btnChange_Click"/>
     </Grid>
 </Page>
 
