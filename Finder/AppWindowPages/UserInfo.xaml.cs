@@ -1,17 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows.Controls;
 
 namespace Finder.AppWindowPages
 {
@@ -24,11 +11,11 @@ namespace Finder.AppWindowPages
         public UserInfo()
         {
             InitializeComponent();
-            if(CurrentUser.user.User_Info != null)
+            if (CurrentUser.user.User_Info != null)
             {
                 FillTable();
             }
-            UserGrid.IsEnabled = false;
+            ChangeOrApply();
         }
 
         public void FillTable()
@@ -56,6 +43,23 @@ namespace Finder.AppWindowPages
                     break;
                 }
             }
+        }
+
+        private void ChangeOrApply()
+        {
+            if (btnChange.IsEnabled)
+            {
+                UserGrid.IsEnabled = false;
+            }
+            else
+            {
+                UserGrid.IsEnabled = true;
+            }
+        }
+
+        private void btnChange_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            btnChange.IsEnabled = false;
         }
     }
 }

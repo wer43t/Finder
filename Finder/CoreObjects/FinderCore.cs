@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace Finder
@@ -46,7 +42,7 @@ namespace Finder
                 bd_connections.connection.User.Add(user);
                 bd_connections.connection.SaveChanges();
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 MessageBox.Show(e.Message);
             }
@@ -85,7 +81,7 @@ namespace Finder
             var auth = from usrs in Users
                        where user.email == usrs.email && user.password == usrs.password
                        select usrs;
-            if (auth.Count() == 1) 
+            if (auth.Count() == 1)
             {
                 CurrentUser.user = auth.FirstOrDefault();
                 return true;
@@ -98,7 +94,18 @@ namespace Finder
         {
             var user = NormalUsers.FirstOrDefault();
             NormalUsers.Remove(user);
-            return user;
+            if (user != null)
+            {
+                if (CurrentUser.user.User_ID != user.User_ID)
+                    return user;
+                else
+                {
+                    var us = NormalUsers.FirstOrDefault();
+                    NormalUsers.Remove(us);
+                    return us;
+                }
+            }
+            return null;
         }
 
         public bool MailValidate(string mail)

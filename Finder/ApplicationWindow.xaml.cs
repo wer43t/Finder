@@ -1,16 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using System.Windows;
 
 namespace Finder
 {
@@ -19,6 +7,7 @@ namespace Finder
     /// </summary>
     public partial class ApplicationWindow : Window
     {
+        AppWindowPages.FindUsers users = new AppWindowPages.FindUsers();
         public ApplicationWindow()
         {
             InitializeComponent();
@@ -32,7 +21,25 @@ namespace Finder
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            frame_reg.NavigationService.Navigate(new AppWindowPages.FindUsers());
+            frame_reg.NavigationService.Navigate(users);
         }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            frame_reg.NavigationService.Navigate(new AppWindowPages.PairsPage());
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            frame_reg.NavigationService.Navigate(new AppWindowPages.PageMessenger());
+        }
+
+        private void AuthRegButton_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.MainWindow = new MainWindow();
+            this.Close();
+            Application.Current.MainWindow.Show();
+        }
+
     }
 }
