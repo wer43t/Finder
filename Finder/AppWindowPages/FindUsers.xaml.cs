@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using FinderCore;
 
 namespace Finder.AppWindowPages
 {
@@ -9,7 +10,7 @@ namespace Finder.AppWindowPages
     /// </summary>
     public partial class FindUsers : Page
     {
-        FinderCore core = new FinderCore();
+        FinderCoreApp core = new FinderCoreApp();
         User user;
         public FindUsers()
         {
@@ -26,6 +27,7 @@ namespace Finder.AppWindowPages
         {
             Name.Content = user.Name;
             age.Content = core.GetAge(user.Birthday);
+
             country.Content = user.Country.Name;
             education.Content = user.User_Info.Education;
             Height.Content = user.User_Info.Height;

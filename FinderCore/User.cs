@@ -24,5 +24,9 @@ namespace FinderCore
         public Nullable<System.DateTime> Birthday { get; set; }
         public Nullable<int> Subscibe_Type { get; set; }
         public Nullable<int> ID_User_Info { get; set; }
+    
+        public virtual Country Country { get; set; }
+        public virtual Subscribe Subscribe { get; set; }
+        public virtual User_Info User_Info { get; set; }
     }
 }

@@ -5,13 +5,16 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="bb0b770446ee42bcb728e456553f7683" Name="Diagram1">
-        <EntityTypeShape EntityType="finderModel.Country" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="finderModel.Pairs" Width="1.5" PointX="2.75" PointY="0.75" />
-        <EntityTypeShape EntityType="finderModel.Subscribe" Width="1.5" PointX="0.75" PointY="3.75" />
-        <EntityTypeShape EntityType="finderModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="3.75" />
-        <EntityTypeShape EntityType="finderModel.User" Width="1.5" PointX="4.75" PointY="0.75" />
-        <EntityTypeShape EntityType="finderModel.User_Info" Width="1.5" PointX="4.75" PointY="4.75" />
-        <EntityTypeShape EntityType="finderModel.Zodiac" Width="1.5" PointX="6.75" PointY="0.75" />
+        <EntityTypeShape EntityType="finderModel.Country" Width="1.5" PointX="3" PointY="5.75" />
+        <EntityTypeShape EntityType="finderModel.Pairs" Width="1.5" PointX="5.75" PointY="5.75" />
+        <EntityTypeShape EntityType="finderModel.Subscribe" Width="1.5" PointX="3" PointY="8.125" />
+        <EntityTypeShape EntityType="finderModel.User" Width="1.5" PointX="5.25" PointY="1" />
+        <EntityTypeShape EntityType="finderModel.User_Info" Width="1.5" PointX="3" PointY="1.25" />
+        <EntityTypeShape EntityType="finderModel.Zodiac" Width="1.5" PointX="0.75" PointY="2" />
+        <AssociationConnector Association="finderModel.FK_User_Country" />
+        <AssociationConnector Association="finderModel.FK_User_Subscribe" />
+        <AssociationConnector Association="finderModel.FK_User_User_Info" />
+        <AssociationConnector Association="finderModel.FK_User_Info_Zodiac" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

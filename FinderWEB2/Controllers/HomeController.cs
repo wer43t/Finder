@@ -20,9 +20,9 @@ namespace FinderWEB2.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(User user)
         {
-            return View();
+            return View(user);
         }
 
         public IActionResult Privacy()

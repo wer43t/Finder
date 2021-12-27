@@ -1,4 +1,5 @@
 ﻿using System.Windows.Controls;
+using FinderCore;
 
 namespace Finder.AppWindowPages
 {
@@ -7,7 +8,7 @@ namespace Finder.AppWindowPages
     /// </summary>
     public partial class UserInfo : Page
     {
-        FinderCore core = new FinderCore();
+        FinderCoreApp core = new FinderCoreApp();
         public UserInfo()
         {
             InitializeComponent();

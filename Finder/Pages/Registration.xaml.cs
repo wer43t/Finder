@@ -2,6 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Navigation;
+using FinderCore;
 
 namespace Finder
 {
@@ -10,7 +11,7 @@ namespace Finder
     /// </summary>
     public partial class Registration : Page
     {
-        FinderCore core = new FinderCore();
+        FinderCoreApp core = new FinderCoreApp();
         public Registration()
         {
             InitializeComponent();

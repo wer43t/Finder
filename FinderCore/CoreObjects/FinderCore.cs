@@ -46,17 +46,28 @@ namespace FinderCore
             return cnID.ToList()[0].Zodiac_ID;
         }
 
-        public void CreateNewAccount(User user)
+        public bool CreateNewAccount(User user)
         {
             try
             {
                 bd_connections.connection.User.Add(user);
                 bd_connections.connection.SaveChanges();
+                return true;
             }
             catch (Exception e)
             {
                 MessageBox.Show(e.Message);
             }
+            return false;
+        }
+
+        public  User GetUser(string login, string password)
+        {
+            ObservableCollection<User> users = new ObservableCollection<User>(bd_connections.connection.User);
+
+            var currentUser = users.Where(u => u.email == login && u.password == password).FirstOrDefault();
+
+            return currentUser;
         }
 
         public int GetCountryID(string cnName)

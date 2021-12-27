@@ -104,9 +104,6 @@
     <Compile Include="Subscribe.cs">
       <DependentUpon>SqlConn.tt</DependentUpon>
     </Compile>
-    <Compile Include="sysdiagrams.cs">
-      <DependentUpon>SqlConn.tt</DependentUpon>
-    </Compile>
     <Compile Include="User.cs">
       <DependentUpon>SqlConn.tt</DependentUpon>
     </Compile>
