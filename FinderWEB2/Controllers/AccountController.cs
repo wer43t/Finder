@@ -26,7 +26,10 @@ namespace FinderWEB2.Controllers
 
             if (core.UserAuth(user))
             {
-                return RedirectToAction("Index", "Home", core.GetUser(user.email, user.password));
+                if (!core.CheckUserInfo())
+                    return RedirectToAction("UpdateAbout", "Account");
+                else
+                    return RedirectToAction("Index", "Home", core.GetUser(user.email, user.password));
             }
             ModelState.AddModelError("", "Invalid login or password");
             return View(user);
@@ -42,15 +45,35 @@ namespace FinderWEB2.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Register(User user)
         {
+            user.Country_ID = Convert.ToInt32(Request.Form["Country"]);
+            user.Username = "unknown";
             if (core.CreateNewAccount(user))
             {
-                TempData["User"] = core.GetUser(user.email, user.password);
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Login", "Account");
             }
 
             ModelState.AddModelError("", "Invalid data");
 
             return View(user);
+        }
+
+        [HttpGet]
+        public IActionResult UpdateAbout()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult UpdateAbout(User_Info UserInfo)
+        {
+            UserInfo.Zodiac_ID = Convert.ToInt32(Request.Form["Zodiac_ID"]);
+            core.CreateNewUserInfo(UserInfo);
+            return RedirectToAction("Index", "Home");
+            //if (core.CreateNewAccount(user))
+            //{
+            //    return RedirectToAction("Index", "Home", core.GetUser(user.email, user.password));
+            //}
         }
     }
 }

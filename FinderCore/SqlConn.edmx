@@ -100,7 +100,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_User_User_Info">
-          <End Role="User_Info" Type="Self.User_Info" Multiplicity="0..1" />
+          <End Role="User_Info" Type="Self.User_Info" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="User" Type="Self.User" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User_Info">

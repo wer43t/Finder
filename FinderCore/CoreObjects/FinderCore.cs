@@ -54,11 +54,10 @@ namespace FinderCore
                 bd_connections.connection.SaveChanges();
                 return true;
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                MessageBox.Show(e.Message);
+                return false;
             }
-            return false;
         }
 
         public  User GetUser(string login, string password)

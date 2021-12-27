@@ -1,0 +1,53 @@
+﻿@using FinderCore;
+@using System.Collections.ObjectModel
+@{ Layout = "~/Views/Shared/_IndexLayout.cshtml"; }
+@{
+    ViewData["Title"] = "Login";
+}
+
+    @{
+        FinderCoreApp core = new FinderCoreApp();}
+
+
+
+<h1>@ViewData["Title"]</h1>
+
+<h2>Login to the site</h2>
+
+
+<form asp-action="Register" asp-controller="Account">
+    <div>
+        <div class="form-group">
+            <label name="Name">Имя: </label>
+            <input type="text" name="Name" />
+        </div>
+        <div class="form-group">
+            <label name="Surname">Фамилия: </label>
+            <input type="text" name="Surname" />
+        </div>
+        <div class="form-group">
+            <label name="password">Пароль: </label>
+            <input type="password" name="password" />
+        </div>
+        <div class="form-group">
+            <label name="email">email: </label>
+            <input type="text" name="email" />
+        </div>
+        <div class="form-group">
+            <label name="Country_ID">Страна </label>
+            <select name="Country">
+                @foreach (var item in core.GetCountries())
+                {
+                    <option value="@item.Country_ID.ToString()" name="Country">@item.Name.ToString()</option>
+                }
+            </select>
+        </div>
+        <div class="form-group">
+            <label name="Birthday">Birthday: </label>
+            <input type="date" name="Birthday" />
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Sign in" class="btn btn-outline-dark" />
+        </div>
+    </div>
+</form>
