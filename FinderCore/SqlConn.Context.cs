@@ -28,6 +28,7 @@ namespace FinderCore
         public virtual DbSet<Country> Country { get; set; }
         public virtual DbSet<Pairs> Pairs { get; set; }
         public virtual DbSet<Subscribe> Subscribe { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<User> User { get; set; }
         public virtual DbSet<User_Info> User_Info { get; set; }
         public virtual DbSet<Zodiac> Zodiac { get; set; }

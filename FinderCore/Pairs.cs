@@ -17,7 +17,5 @@ namespace FinderCore
         public int First_User { get; set; }
         public int Second_User { get; set; }
         public Nullable<System.DateTime> Date { get; set; }
-    
-        public virtual User User { get; set; }
     }
 }

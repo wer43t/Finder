@@ -14,12 +14,6 @@ namespace FinderCore
     
     public partial class User_Info
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public User_Info()
-        {
-            this.User = new HashSet<User>();
-        }
-    
         public int ID_User_Info { get; set; }
         public string Education { get; set; }
         public Nullable<int> Height { get; set; }
@@ -28,9 +22,5 @@ namespace FinderCore
         public Nullable<int> Zodiac_ID { get; set; }
         public string Photo { get; set; }
         public string Photo_format { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User> User { get; set; }
-        public virtual Zodiac Zodiac { get; set; }
     }
 }

@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Finder", "Finder\Finder.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinderCore", "FinderCore\FinderCore.csproj", "{7B68CFF9-6063-4935-82B4-49FA90BF000D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinderAPI", "FinderAPI\FinderAPI.csproj", "{98763223-849C-4D57-909C-2044219A79B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinderWEB2", "FinderWEB2\FinderWEB2.csproj", "{A2DAE852-00ED-4A5C-848C-5236CE7826BD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{7B68CFF9-6063-4935-82B4-49FA90BF000D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B68CFF9-6063-4935-82B4-49FA90BF000D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B68CFF9-6063-4935-82B4-49FA90BF000D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98763223-849C-4D57-909C-2044219A79B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98763223-849C-4D57-909C-2044219A79B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98763223-849C-4D57-909C-2044219A79B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98763223-849C-4D57-909C-2044219A79B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2DAE852-00ED-4A5C-848C-5236CE7826BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2DAE852-00ED-4A5C-848C-5236CE7826BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2DAE852-00ED-4A5C-848C-5236CE7826BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2DAE852-00ED-4A5C-848C-5236CE7826BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

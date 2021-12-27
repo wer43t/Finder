@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace FinderCore
 {
-    public class FinderCore
+    public class FinderCoreApp
     {
         public static ObservableCollection<Country> Countries { get; set; }
         public static ObservableCollection<User> Users { get; set; }
@@ -24,6 +24,12 @@ namespace FinderCore
         public ObservableCollection<Country> GetCountries()
         {
             return Countries = new ObservableCollection<Country>(bd_connections.connection.Country.ToList());
+        }
+
+        public Country GetCountries(int id)
+        {
+            Countries = new ObservableCollection<Country>(bd_connections.connection.Country.ToList());
+            return Countries.Where(c => c.Country_ID == id).FirstOrDefault();
         }
 
         public ObservableCollection<Zodiac> GetZodiac()

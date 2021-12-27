@@ -14,16 +14,7 @@ namespace FinderCore
     
     public partial class Subscribe
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Subscribe()
-        {
-            this.User = new HashSet<User>();
-        }
-    
         public int Subscribe_ID { get; set; }
         public string Type { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User> User { get; set; }
     }
 }

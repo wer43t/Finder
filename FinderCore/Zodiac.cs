@@ -14,16 +14,7 @@ namespace FinderCore
     
     public partial class Zodiac
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Zodiac()
-        {
-            this.User_Info = new HashSet<User_Info>();
-        }
-    
         public int Zodiac_ID { get; set; }
         public string Name { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User_Info> User_Info { get; set; }
     }
 }
