@@ -12,12 +12,10 @@ namespace FinderCore
     using System;
     using System.Collections.Generic;
     
-    public partial class Pairs
+    public partial class Likes
     {
-        public int First_User { get; set; }
-        public int Second_User { get; set; }
-        public Nullable<System.DateTime> Date { get; set; }
-    
-        public virtual User User { get; set; }
+        public int LikesID { get; set; }
+        public Nullable<int> FrstUser { get; set; }
+        public Nullable<int> SecUser { get; set; }
     }
 }

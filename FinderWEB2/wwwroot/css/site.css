@@ -7,6 +7,88 @@ a.navbar-brand {
   word-break: break-all;
 }
 
+/*
+*/
+
+@import url('http://fonts.cdnfonts.com/css/harlow-solid-italic');
+
+
+.parent {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 10%;
+    left: 0;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    overflow: auto;
+}
+
+label {
+    font-size: 20px;
+}
+
+
+.mg-20 {
+    margin-bottom: 15px;
+}
+
+.block {
+    width: 50%;
+    height: 50%;
+    display: flex;
+    margin-top: 100px;
+    margin-bottom: 100px !important;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+#header {
+    width: 100%;
+    height: 80px;
+    background-color: #783bf9;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    font-family: 'Harlow Solid Italic', sans-serif;
+    font-size: 36px;
+}
+
+.element {
+    display: flex;
+    width: 100%;
+    height: 10%;
+}
+
+.btn {
+    width: 40%;
+    height: 40px;
+    border-radius: 6px;
+}
+
+.inputs {
+    width: 100%;
+    height: 40px;
+    min-width: 500px;
+    border-radius: 10px;
+}
+
+.result {
+    display: flex;
+    width: 100%;
+    height: 10%;
+    border: solid 2px black;
+    border-radius: 6px;
+}
+
+/* */
+
 /* Provide sufficient contrast against white background */
 a {
   color: #0366d6;

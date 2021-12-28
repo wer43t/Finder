@@ -12,10 +12,17 @@
           <Property Name="Country_ID" Type="int" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="Likes">
+          <Key>
+            <PropertyRef Name="LikesID" />
+          </Key>
+          <Property Name="LikesID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FrstUser" Type="int" />
+          <Property Name="SecUser" Type="int" />
+        </EntityType>
         <EntityType Name="Pairs">
           <Key>
             <PropertyRef Name="First_User" />
-            <PropertyRef Name="Second_User" />
           </Key>
           <Property Name="First_User" Type="int" Nullable="false" />
           <Property Name="Second_User" Type="int" Nullable="false" />
@@ -63,6 +70,18 @@
           <Property Name="Zodiac_ID" Type="int" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <Association Name="FK_Pairs_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Pairs" Type="Self.Pairs" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="User_ID" />
+            </Principal>
+            <Dependent Role="Pairs">
+              <PropertyRef Name="First_User" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_User_Country">
           <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
           <End Role="User" Type="Self.User" Multiplicity="*" />
@@ -115,11 +134,16 @@
         </Association>
         <EntityContainer Name="Хранилище finderModelContainer">
           <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Likes" EntityType="Self.Likes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Pairs" EntityType="Self.Pairs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Subscribe" EntityType="Self.Subscribe" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User_Info" EntityType="Self.User_Info" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Zodiac" EntityType="Self.Zodiac" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Pairs_User" Association="Self.FK_Pairs_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Pairs" EntitySet="Pairs" />
+          </AssociationSet>
           <AssociationSet Name="FK_User_Country" Association="Self.FK_User_Country">
             <End Role="Country" EntitySet="Country" />
             <End Role="User" EntitySet="User" />
@@ -164,6 +188,11 @@
             <End Role="Zodiac" EntitySet="Zodiac" />
             <End Role="User_Info" EntitySet="User_Info" />
           </AssociationSet>
+          <EntitySet Name="Likes" EntityType="finderModel.Likes" />
+          <AssociationSet Name="FK_Pairs_User" Association="finderModel.FK_Pairs_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Pairs" EntitySet="Pairs" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Country">
           <Key>
@@ -176,11 +205,11 @@
         <EntityType Name="Pairs">
           <Key>
             <PropertyRef Name="First_User" />
-            <PropertyRef Name="Second_User" />
           </Key>
           <Property Name="First_User" Type="Int32" Nullable="false" />
           <Property Name="Second_User" Type="Int32" Nullable="false" />
           <Property Name="Date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="User" Relationship="finderModel.FK_Pairs_User" FromRole="Pairs" ToRole="User" />
         </EntityType>
         <EntityType Name="Subscribe">
           <Key>
@@ -207,6 +236,7 @@
           <NavigationProperty Name="Country" Relationship="finderModel.FK_User_Country" FromRole="User" ToRole="Country" />
           <NavigationProperty Name="Subscribe" Relationship="finderModel.FK_User_Subscribe" FromRole="User" ToRole="Subscribe" />
           <NavigationProperty Name="User_Info" Relationship="finderModel.FK_User_User_Info" FromRole="User" ToRole="User_Info" />
+          <NavigationProperty Name="Pairs" Relationship="finderModel.FK_Pairs_User" FromRole="User" ToRole="Pairs" />
         </EntityType>
         <EntityType Name="User_Info">
           <Key>
@@ -279,6 +309,26 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Likes">
+          <Key>
+            <PropertyRef Name="LikesID" />
+          </Key>
+          <Property Name="LikesID" Type="Int32" Nullable="false" />
+          <Property Name="FrstUser" Type="Int32" />
+          <Property Name="SecUser" Type="Int32" />
+        </EntityType>
+        <Association Name="FK_Pairs_User">
+          <End Type="finderModel.User" Role="User" Multiplicity="1" />
+          <End Type="finderModel.Pairs" Role="Pairs" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="User_ID" />
+            </Principal>
+            <Dependent Role="Pairs">
+              <PropertyRef Name="First_User" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -345,6 +395,15 @@
               <MappingFragment StoreEntitySet="Zodiac">
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Zodiac_ID" ColumnName="Zodiac_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Likes">
+            <EntityTypeMapping TypeName="finderModel.Likes">
+              <MappingFragment StoreEntitySet="Likes">
+                <ScalarProperty Name="SecUser" ColumnName="SecUser" />
+                <ScalarProperty Name="FrstUser" ColumnName="FrstUser" />
+                <ScalarProperty Name="LikesID" ColumnName="LikesID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

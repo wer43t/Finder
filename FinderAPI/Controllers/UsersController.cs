@@ -10,7 +10,7 @@ namespace FinderAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class HomeController : Controller
+    public class UsersController : Controller
     {
         FinderCoreApp core = new FinderCoreApp();
         [HttpGet]

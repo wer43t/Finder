@@ -29,7 +29,7 @@ namespace FinderWEB2.Controllers
                 if (!core.CheckUserInfo())
                     return RedirectToAction("UpdateAbout", "Account");
                 else
-                    return RedirectToAction("Index", "Home", core.GetUser(user.email, user.password));
+                    return RedirectToAction("Index", "About");
             }
             ModelState.AddModelError("", "Invalid login or password");
             return View(user);
@@ -69,7 +69,7 @@ namespace FinderWEB2.Controllers
         {
             UserInfo.Zodiac_ID = Convert.ToInt32(Request.Form["Zodiac_ID"]);
             core.CreateNewUserInfo(UserInfo);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "About");
             //if (core.CreateNewAccount(user))
             //{
             //    return RedirectToAction("Index", "Home", core.GetUser(user.email, user.password));

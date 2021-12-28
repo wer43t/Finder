@@ -28,5 +28,6 @@ namespace FinderCore
         public virtual Country Country { get; set; }
         public virtual Subscribe Subscribe { get; set; }
         public virtual User_Info User_Info { get; set; }
+        public virtual Pairs Pairs { get; set; }
     }
 }

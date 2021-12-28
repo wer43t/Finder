@@ -82,6 +82,9 @@
     </Compile>
     <Compile Include="CoreObjects\CurrentUser.cs" />
     <Compile Include="CoreObjects\FinderCore.cs" />
+    <Compile Include="Likes.cs">
+      <DependentUpon>SqlConn.tt</DependentUpon>
+    </Compile>
     <Compile Include="Pairs.cs">
       <DependentUpon>SqlConn.tt</DependentUpon>
     </Compile>

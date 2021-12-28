@@ -12,6 +12,8 @@ namespace FinderCore
     public class FinderCoreApp
     {
         public static ObservableCollection<Country> Countries { get; set; }
+
+        public static ObservableCollection<Likes> Likes { get; set; }
         public static ObservableCollection<User> Users { get; set; }
         public static ObservableCollection<User_Info> UserInfos { get; set; }
         public static ObservableCollection<Zodiac> Zodiacs { get; set; }
@@ -44,6 +46,15 @@ namespace FinderCore
                        where zds.Name == zodiacName
                        select zds;
             return cnID.ToList()[0].Zodiac_ID;
+        }
+
+        public void AddLikes(User user)
+        {
+            Likes temp = new Likes();
+            temp.FrstUser = CurrentUser.user.User_ID;
+            temp.SecUser = user.User_ID;
+            bd_connections.connection.Likes.Add(temp);
+            bd_connections.connection.SaveChanges();
         }
 
         public bool CreateNewAccount(User user)

@@ -1,0 +1,71 @@
+﻿@using FinderCore
+@model User
+
+@{ 
+    FinderCoreApp core = new FinderCoreApp();
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="parent">
+        <div class="block">
+            <div class="element">
+                Имя
+            </div>
+            <div class="result">
+                @Model.Username.ToString()
+            </div>
+            <div class="element">
+                Возраст
+            </div>
+            <div class="result">
+                @core.GetAge(Model.Birthday).ToString()
+            </div>
+            <div class="element">
+                Страна
+            </div>
+            <div class="result">
+                @Model.Country.Name.ToString()
+            </div>
+            <div class="element">
+                Образование
+            </div>
+            <div class="result">
+                @Model.User_Info.Education.ToString()
+            </div>
+            <div class="element">
+                Рост
+            </div>
+            <div class="result">
+                @Model.User_Info.Height.ToString()
+            </div>
+            <div class="element">
+                Вес
+            </div>
+            <div class="result">
+                @Model.User_Info.Weight.ToString()
+            </div>
+            <div class="element">
+                Знак зодиака
+            </div>
+            <div class="result">
+                @Model.User_Info.Zodiac.Name.ToString()
+            </div>
+            <div class="element">
+                Обо мне
+            </div>
+            <div class="result">
+                @Model.User_Info.About.ToString()
+            </div>
+        </div>
+    </div>
+</body>
+</html>

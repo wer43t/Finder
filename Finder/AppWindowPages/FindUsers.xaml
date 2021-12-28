@@ -69,7 +69,7 @@
             <Button Grid.Column="0" Grid.Row="5" Margin="32,0">
                 <Image x:Name="imgDislike" Source="..\images/dislike.png" Height="30" Width="30" MouseEnter="imgDislike_MouseEnter" MouseLeave="imgDislike_MouseLeave"/>
             </Button>
-            <Button x:Name="btnLike"  Grid.Column="3" Grid.Row="5" Click="Button_Click" Background="Transparent" BorderBrush="Transparent" MouseEnter="btnLike_MouseEnter" MouseLeave="btnLike_MouseLeave" Margin="32,0,31,0">
+            <Button x:Name="btnLike"  Grid.Column="3" Grid.Row="5" Click="Button_Click" Background="Transparent" BorderBrush="Transparent" MouseEnter="btnLike_MouseEnter" MouseLeave="btnLike_MouseLeave" Margin="31.8,0.2,30.6,0" Height="57" VerticalAlignment="Top">
                 <Image x:Name="imgLike" Source="../images/like.png" Height="30" Width="30"/>
             </Button>
         </Grid>
