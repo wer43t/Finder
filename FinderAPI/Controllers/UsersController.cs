@@ -14,14 +14,32 @@ namespace FinderAPI.Controllers
     {
         FinderCoreApp core = new FinderCoreApp();
         [HttpGet]
-        public ObservableCollection<Country> Get()
+        public ObservableCollection<User> Get()
         {
-            return core.GetCountries();
+            return core.GetUsers();
         }
         [HttpGet("{id}")]
-        public Country Get(int id)
+        public User Get(int id)
         {
-            return core.GetCountries( id);
+            return core.GetUsers(id);
+        }
+
+        [HttpPost]
+        public IActionResult Create(User user)
+        {
+            core.CreateNewAccount(user);
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            var result = core.GetUsers(id);
+            if (result == null)
+                return NotFound();
+
+            core.DeleteUser(id);
+            return NoContent();
         }
 
     }

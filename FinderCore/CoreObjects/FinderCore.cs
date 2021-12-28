@@ -71,6 +71,18 @@ namespace FinderCore
             }
         }
 
+        public ObservableCollection<User> GetUsers()
+        {
+            return Users = new ObservableCollection<User>(bd_connections.connection.User.ToList());
+        }
+
+        public User GetUsers(int id)
+        {
+            ObservableCollection<User> users = new ObservableCollection<User>(bd_connections.connection.User.ToList());
+            var currentUser = users.Where(u => u.User_ID == id);
+            return currentUser.FirstOrDefault();
+        }
+
         public  User GetUser(string login, string password)
         {
             ObservableCollection<User> users = new ObservableCollection<User>(bd_connections.connection.User);
@@ -78,6 +90,15 @@ namespace FinderCore
             var currentUser = users.Where(u => u.email == login && u.password == password).FirstOrDefault();
 
             return currentUser;
+        }
+
+        public void DeleteUser(int id)
+        {
+            User user = bd_connections.connection.User.FirstOrDefault(u => u.User_ID == id);
+            bd_connections.connection.User.Remove(user);
+            bd_connections.connection.SaveChanges();
+
+
         }
 
         public int GetCountryID(string cnName)
