@@ -47,7 +47,7 @@ namespace FinderWEB2.Controllers
         {
             return View();
         }
-        public ActionResult Details(int id)
+        public ActionResult Details(int id)     //Обязательно исправить Неиспользуемый параметр id (Мясников)
         {
             return View();
         }
@@ -74,7 +74,7 @@ namespace FinderWEB2.Controllers
         }
 
         // GET: FindUserController/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int id)     //Обязательно исправить Неиспользуемый параметр id (Мясников)
         {
             return View();
         }
@@ -95,7 +95,7 @@ namespace FinderWEB2.Controllers
         }
 
         // GET: FindUserController/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int id)     //Обязательно исправить Неиспользуемый параметр id (Мясников)
         {
             return View();
         }

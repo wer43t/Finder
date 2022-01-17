@@ -69,7 +69,7 @@ namespace FinderWEB2.Controllers
         {
             UserInfo.Zodiac_ID = Convert.ToInt32(Request.Form["Zodiac_ID"]);
             core.CreateNewUserInfo(UserInfo);
-            return RedirectToAction("Index", "About");
+            return RedirectToAction("Index", "About");      //Желательно исправить Закомментированные строки кода (Мясников)
             //if (core.CreateNewAccount(user))
             //{
             //    return RedirectToAction("Index", "Home", core.GetUser(user.email, user.password));

@@ -2,7 +2,7 @@ using System;
 
 namespace FinderAPI
 {
-    public class WeatherForecast
+    public class WeatherForecast        //Обязательно исправить Класс не используется в проекте (Мясников)
     {
         public DateTime Date { get; set; }
 

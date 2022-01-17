@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace FinderCore
 {
-    public class FinderCoreApp
+    public class FinderCoreApp      //Желательно исправить Пустые комментарии в коде (Мясников)
     {
         public static ObservableCollection<Country> Countries { get; set; }
 
@@ -96,7 +96,7 @@ namespace FinderCore
         {
             User user = bd_connections.connection.User.FirstOrDefault(u => u.User_ID == id);
             bd_connections.connection.User.Remove(user);
-            bd_connections.connection.SaveChanges();
+            bd_connections.connection.SaveChanges();        //Желательно исправить Пустые строки кода (Мясников)
 
 
         }
@@ -168,14 +168,14 @@ namespace FinderCore
 
         public bool CheckUserInfo()
         {
-            return CurrentUser.user.ID_User_Info == null ? false : true;
+            return CurrentUser.user.ID_User_Info == null ? false : true;        //Желательно исправить Условное выражение можно упростить
         }
 
         public string GetAge(DateTime? dateOfBirth)
         {
             var today = DateTime.Today;
 
-            var a = (today.Year * 100 + today.Month) * 100 + today.Day;
+            var a = (today.Year * 100 + today.Month) * 100 + today.Day;                                     //Желательно исправить Неинформативное название переменных (Мясников)
             var b = (dateOfBirth.Value.Year * 100 + dateOfBirth.Value.Month) * 100 + dateOfBirth.Value.Day;
 
             return ((a - b) / 10000).ToString();

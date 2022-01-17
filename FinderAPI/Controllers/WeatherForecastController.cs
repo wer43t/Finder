@@ -9,7 +9,7 @@ namespace FinderAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class WeatherForecastController : ControllerBase
+    public class WeatherForecastController : ControllerBase     //Обязательно исправить Контроллер не соответсвует теме проекта и не используется(Мясников)
     {
         private static readonly string[] Summaries = new[]
         {

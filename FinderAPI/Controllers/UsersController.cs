@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using FinderCore;
 using System.Collections.ObjectModel;
 
-namespace FinderAPI.Controllers
+namespace FinderAPI.Controllers         //Хорошо Компактные методы (Мясников)
 {
     [Route("api/[controller]")]
     [ApiController]

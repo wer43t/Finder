@@ -20,7 +20,7 @@ namespace Finder.AppWindowPages
 
 
 
-    private void GetNextUser()
+    private void GetNextUser(User user)
     {
         user = core.GetOneUser();
         if (user != null)
@@ -43,7 +43,7 @@ namespace Finder.AppWindowPages
 
     private void Button_Click(object sender, RoutedEventArgs e)
     {
-        GetNextUser();
+        GetNextUser(user);
     }
 
     private void btnLike_MouseEnter(object sender, MouseEventArgs e)

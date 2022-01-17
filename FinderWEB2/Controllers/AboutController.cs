@@ -9,7 +9,7 @@ namespace FinderWEB2.Controllers
 {
     public class AboutController : Controller
     {
-        FinderCoreApp core = new FinderCoreApp();
+        FinderCoreApp core = new FinderCoreApp();       //Обязатеьно исправить Поле класса не используется (Мясников)
         [HttpGet]
         public IActionResult Index()
         {

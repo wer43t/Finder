@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FinderCore
 {
-    public static class bd_connections
+    public static class bd_connections      //Желательно исправить некоррекное именование класса (Мясников)
     {
         public static FinderEntities connection = new FinderEntities();
     }

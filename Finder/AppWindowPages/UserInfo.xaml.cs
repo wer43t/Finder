@@ -58,7 +58,7 @@ namespace Finder.AppWindowPages
             }
         }
 
-        private void btnChange_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void btnChange_Click(object sender, System.Windows.RoutedEventArgs e)   
         {
             btnChange.IsEnabled = false;
         }

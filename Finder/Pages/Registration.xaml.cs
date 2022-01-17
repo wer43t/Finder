@@ -23,7 +23,7 @@ namespace Finder
             NavigationService.Navigate(new Auth());
         }
 
-        private void btnRegistration(object sender, RoutedEventArgs e)
+        private void btnRegistration(object sender, RoutedEventArgs e)      //Желательно исправить Нарушение правил именования методов (Мясников)
         {
             User user = new User();
             user.Name = Name.Text;
@@ -53,7 +53,7 @@ namespace Finder
         }
 
 
-        private void mail_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        private void mail_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)      //Желательно исправить Нарушение правил именования методов (Мясников)
         {
             var checkMail = core.MailValidate(sender.GetType().GetProperty("Text").GetValue(sender).ToString());
             if (!checkMail)
